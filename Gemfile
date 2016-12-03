@@ -10,8 +10,12 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.4.1'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.11'
-  gem 'byebug',  '9.0.0', platform: :mri
+  gem 'rspec-rails',           '~> 3.5.0'
+  gem 'factory_girl_rails',    '~> 4.7.0'
+  gem 'guard-rspec',           '~> 4.7.2'
+  gem 'spring-commands-rspec', '~> 1.0.2'
+  gem 'sqlite3',               '1.3.11'
+  gem 'byebug',                '9.0.0', platform: :mri
 end
 
 group :development do
@@ -22,10 +26,12 @@ group :development do
 end
 
 group :test do
+  gem "faker",                    '~> 1.4.3'
+  gem "capybara",                 '~> 2.7.1'
+  gem "database_cleaner",         '~> 1.5.3'
+  gem "launchy",                  '~> 2.4.2'
+  gem "selenium-webdriver",       '~> 2.43.0'
   gem 'rails-controller-testing', '0.1.1'
-  gem 'minitest-reporters',       '1.1.9'
-  gem 'guard',                    '2.13.0'
-  gem 'guard-minitest',           '2.4.4'
 end
 
 group :production do
