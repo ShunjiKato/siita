@@ -3,6 +3,8 @@
 
 /* variables */
 $gray-medium-light: #eaeaea;
+$theme-color-normal: #3eaad7;
+$theme-color-faint: #7DBCD7;
 
 
 /* universal */
@@ -56,16 +58,20 @@ p {
 
 /* header */
 
+.navbar-custom {
+  background-color: #e3f2fd;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
+  font-size: 2.5em;
+  color: $theme-color-normal;
   letter-spacing: -1px;
   padding-top: 9px;
-  font-weight: bold;
+  letter-spacing: 0.1em;
   &:hover {
-    color: white;
+    color: $theme-color-faint;
     text-decoration: none;
   }
 }
