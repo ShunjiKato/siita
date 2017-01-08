@@ -22,3 +22,10 @@
 
 # direnv file.
 .envrc
+
+# projcet files.
+.idea/*
+
+# ruby version file.
+.ruby-version
+
