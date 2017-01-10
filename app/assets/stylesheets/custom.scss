@@ -1,10 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* variables */
+/* variables, mixins */
 $gray-medium-light: #eaeaea;
 $theme-color-normal: #3eaad7;
 $theme-color-faint: #7DBCD7;
+
+@mixin box_sizeing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
 
 
 /* universal */
@@ -104,3 +110,15 @@ footer {
   }
 }
 
+/* forms */
+
+input, textarea, select, .unedittable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizeing;
+}
+
+input {
+  height: auto !important;
+}
