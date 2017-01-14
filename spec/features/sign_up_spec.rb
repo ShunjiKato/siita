@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'Sign up' do
+  def extract_confirmation_url(mail)
+    body = mail.body.encoded
+    body[/http[^"]+/]
+  end
+
   scenario 'メールアドレスとパスワードを入力してユーザー登録を行う' do
     visit root_path
     expect(page).to have_http_status :ok
@@ -12,8 +17,7 @@ feature 'Sign up' do
     expect(page).to have_content '確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。'
 
     mail = ActionMailer::Base.deliveries.last
-    body = mail.body.encoded
-    url = body[/http[^"]+/]
+    url = extract_confirmation_url(mail)
     visit url
     expect(page).to have_content 'アカウントが確認されました。'
 
