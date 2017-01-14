@@ -29,7 +29,7 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
 
   # mail setting
-  config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: '0.0.0.0:3000', protocol: 'http' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :test
