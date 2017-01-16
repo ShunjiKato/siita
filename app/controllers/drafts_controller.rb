@@ -4,7 +4,7 @@ class DraftsController < ApplicationController
   # GET /drafts
   # GET /drafts.json
   def index
-    @drafts = Draft.all
+    @drafts = current_user.drafts.all
   end
 
   # GET /drafts/1
