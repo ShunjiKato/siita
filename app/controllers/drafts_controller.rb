@@ -14,7 +14,7 @@ class DraftsController < ApplicationController
 
   # GET /drafts/new
   def new
-    @draft = Draft.new
+    @draft = current_user.drafts.build
   end
 
   # GET /drafts/1/edit
@@ -24,7 +24,8 @@ class DraftsController < ApplicationController
   # POST /drafts
   # POST /drafts.json
   def create
-    @draft = Draft.new(draft_params)
+    #@draft = Draft.new(draft_params)
+    @draft = current_user.drafts.build(draft_params)
 
     respond_to do |format|
       if @draft.save
