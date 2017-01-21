@@ -13,6 +13,7 @@ gem 'devise',       '4.2.0'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'rspec-rails',           '~> 3.5.0'

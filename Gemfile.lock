@@ -94,6 +94,8 @@ GEM
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.17)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -300,6 +302,7 @@ DEPENDENCIES
   devise (= 4.2.0)
   factory_girl_rails (~> 4.7.0)
   faker (~> 1.4.3)
+  font-awesome-rails
   guard-rspec (~> 4.7.2)
   jbuilder (= 2.4.1)
   jquery-rails (= 4.1.1)
