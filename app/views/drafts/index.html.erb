@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>下書き一覧</h1>
+<h2>下書き一覧</h2>
 
 <table class="table table-striped table-bordered table-hover">
   <thead>
@@ -25,4 +25,6 @@
 </table>
 
 <br>
-<%= button_to '新規作成', new_draft_path, method: :get, class: "btn btn-primary" %>
+<%= button_to new_draft_path, method: :get, class: "btn btn-primary" do %>
+  <i class="fa fa-pencil"></i>
+<% end %>
