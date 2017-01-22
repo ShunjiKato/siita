@@ -64,8 +64,43 @@ p {
 
 /* header */
 
-.navbar-custom {
-  background-color: #e3f2fd;
+.header {
+  height: 60px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  border-bottom: 1px solid #DDDDDD;
+  width: 100%;
+  padding: 10px 10px;
+  a {
+    &:hover {
+      background-color: white;
+      color: $gray;
+      text-decoration: none;
+    }
+  }
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+  li {
+    float: left;
+    border-left: 1px solid #DDDDDD;
+  }
+  a {
+    i {
+     margin-right: 5px;
+    }
+  }
+  .btn-link {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 #logo {
@@ -94,13 +129,16 @@ footer {
   a {
     color: $gray;
     &:hover {
-      color: $gray-darker;
+      background-color: white;
+      color: $gray;
+      text-decoration: none;
     }
   }
   small {
     float: left;
   }
   ul {
+    margin-top: 0;
     float: right;
     list-style: none;
     li {
