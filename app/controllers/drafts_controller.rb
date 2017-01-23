@@ -5,6 +5,9 @@ class DraftsController < ApplicationController
   # GET /drafts.json
   def index
     @drafts = current_user.drafts.all
+    if params[:id].present?
+      @draft = current_user.drafts.find(params[:id])
+    end
   end
 
   # GET /drafts/1
