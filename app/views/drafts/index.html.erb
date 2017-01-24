@@ -1,33 +1,31 @@
-<h2>下書き一覧</h2>
+<% provide(:title, "下書き一覧") %>
+<div class="col-md-3">
+  <h2>下書き一覧</h2>
+  <%= button_to new_draft_path, method: :get, class: "btn btn-primary" do %>
+      <i class="fa fa-pencil"></i>
+  <% end %>
+  <table class="table table-hover">
+    <tbody>
+      <% @drafts.each do |draft| %>
+        <tr data-link="<%= drafts_path(id: draft.id) %>">
+          <td><%= draft.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<table class="table table-striped table-bordered table-hover">
-  <tbody>
-    <% @drafts.each do |draft| %>
-      <tr>
-        <td><%= link_to draft.title, drafts_path(id: draft.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= button_to new_draft_path, method: :get, class: "btn btn-primary" do %>
-  <i class="fa fa-pencil"></i>
-<% end %>
-
-<% unless @draft.nil? %>
-
-  <p>
-    <strong>Title:</strong>
-    <%= @draft.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= @draft.content %>
-  </p>
-
-  <%= link_to (button_tag '<i class="fa fa-pencil"></i>編集'.html_safe, type: 'button', class: "btn btn-primary"), edit_draft_path(@draft) %>
-  <%= link_to (button_tag '<i class="fa fa-trash"></i>削除'.html_safe, type: 'button', class: "btn btn-warning"), @draft, method: :delete, data: { confirm: 'Are you sure?'} %>
-
-<% end %>
+<div class="col-md-9">
+  <% unless @draft.nil? %>
+    <%= link_to (button_tag '<i class="fa fa-pencil"></i>編集'.html_safe, type: 'button', class: "btn btn-primary"), edit_draft_path(@draft) %>
+    <%= link_to (button_tag '<i class="fa fa-trash"></i>削除'.html_safe, type: 'button', class: "btn btn-warning"), @draft, method: :delete, data: { confirm: 'Are you sure?'} %>
+    <p>
+      <strong>Title:</strong>
+      <%= @draft.title %>
+    </p>
+    <p>
+      <strong>Content:</strong>
+      <%= @draft.content %>
+    </p>
+  <% end %>
+</div>
