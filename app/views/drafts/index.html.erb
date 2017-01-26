@@ -1,31 +1,47 @@
 <% provide(:title, "下書き一覧") %>
-<div class="col-md-3">
-  <h2>下書き一覧</h2>
-  <%= button_to new_draft_path, method: :get, class: "btn btn-primary" do %>
-      <i class="fa fa-pencil"></i>
-  <% end %>
-  <table class="table table-hover">
-    <tbody>
-      <% @drafts.each do |draft| %>
-        <tr data-link="<%= drafts_path(id: draft.id) %>">
-          <td><%= draft.title %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<div class="row">
+  <div class="col-md-3 draftsSidebar">
+    <div class="draftsSidebarHeader">
+      <span>下書き一覧</span>
+      <%= link_to (button_tag '<i class="fa fa-pencil"></i>'.html_safe, type: 'button', class: "btn btn-primary draftsSidebarHeader_btn"), new_draft_path %>
+    </div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#creatingDrafts">未投稿</a></li>
+      <li><a data-toggle="tab" href="#editingDrafts">投稿済み</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="creatingDrafts">
+        <table class="table table-hover">
+          <tbody>
+            <% @drafts.each do |draft| %>
+              <tr data-link="<%= drafts_path(id: draft.id) %>">
+                <td><%= draft.title %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane" id="editingDrafts">
+      </div>
+    </div>
+  </div>
 
-<div class="col-md-9">
-  <% unless @draft.nil? %>
-    <%= link_to (button_tag '<i class="fa fa-pencil"></i>編集'.html_safe, type: 'button', class: "btn btn-primary"), edit_draft_path(@draft) %>
-    <%= link_to (button_tag '<i class="fa fa-trash"></i>削除'.html_safe, type: 'button', class: "btn btn-warning"), @draft, method: :delete, data: { confirm: 'Are you sure?'} %>
-    <p>
-      <strong>Title:</strong>
-      <%= @draft.title %>
-    </p>
-    <p>
-      <strong>Content:</strong>
-      <%= @draft.content %>
-    </p>
-  <% end %>
+  <div class="col-md-9 draftsPreview">
+    <% unless @draft.nil? %>
+    <div class="draftsPreviewMenu">
+        <%= link_to (button_tag '<i class="fa fa-pencil"></i>編集'.html_safe, type: 'button', class: "btn btn-primary"), edit_draft_path(@draft) %>
+        <%= link_to (button_tag '<i class="fa fa-trash"></i>削除'.html_safe, type: 'button', class: "btn btn-warning"), @draft, method: :delete, data: { confirm: 'Are you sure?'} %>
+    </div>
+    <div class="draftsPreviewContent_header">
+      <h1 class="draftsPreviewContent_title">
+        <%= @draft.title %>
+      </h1>
+    </div>
+    <div class="draftsPreviewContent_body">
+      <p>
+        <%= @draft.content %>
+      </p>
+    </div>
+    <% end %>
+  </div>
 </div>

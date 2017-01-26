@@ -16,7 +16,8 @@ $theme-color-faint: #7DBCD7;
 /* universal */
 
 body {
-  padding-top: 60px;
+  margin: 0;
+  padding: 0;
 }
 
 section {
@@ -27,19 +28,12 @@ textarea {
   resize: vertical;
 }
 
-a {
-  i {
-    margin-right: 5px;
-  }
-}
-
 .center {
   text-align: center;
   h1 {
     margin-bottom: 10px;
   }
 }
-
 
 /* typography */
 
@@ -48,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 32px;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
@@ -72,14 +66,18 @@ p {
 
 .header {
   height: 60px;
-  position: fixed;
+  //position: fixed;
   top: 0px;
   left: 0px;
   background-color: white;
   border-bottom: 1px solid #DDDDDD;
   width: 100%;
   padding: 10px 10px;
+  display: block;
   a {
+    i {
+      margin-right: 5px;
+    }
     &:hover {
       background-color: white;
       color: $gray;
@@ -87,6 +85,7 @@ p {
     }
   }
 }
+
 
 .header-left {
   float: left;
@@ -106,11 +105,11 @@ p {
 
 #logo {
   float: left;
+  line-height: 40px;
   margin-right: 10px;
   font-size: 2.5em;
   color: $theme-color-normal;
   letter-spacing: -1px;
-  padding-top: 9px;
   letter-spacing: 0.1em;
   &:hover {
     color: $theme-color-faint;
@@ -159,4 +158,48 @@ input, textarea, select, .unedittable-input {
 
 input {
   height: auto !important;
+}
+
+/* draft */
+
+.draftsSidebar {
+  border-right: 1px solid $gray-medium-light;
+  padding-right: 0;
+  height: 850px;
+}
+
+.draftsSidebarHeader {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 64px;
+}
+
+.draftsSidebarHeader_btn {
+  float: right;
+  margin: 18px 10px 0 0;
+}
+
+.draftsPreview {
+  padding: 0;
+}
+
+.draftsPreviewMenu {
+  padding-left: 20px;
+  line-height: 64px;
+  display: block;
+  border-bottom: solid 1px $gray-medium-light;
+}
+
+.draftsPreviewContent_header {
+  padding: 4px 20px;
+  border-bottom: solid 1px $gray-medium-light;
+}
+
+.draftsPreviewContent_title {
+  margin: 10px 0;
+  text-align: left;
+}
+
+.draftsPreviewContent_body {
+  padding: 10px 20px;
 }
