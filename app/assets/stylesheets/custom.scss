@@ -49,7 +49,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 20px;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -202,4 +202,13 @@ input {
 
 .draftsPreviewContent_body {
   padding: 10px 20px;
+}
+
+/* feedPage */
+
+.feedPage_header {
+  margin-bottom: 20px;
+  h2 {
+    text-align: left;
+  }
 }
