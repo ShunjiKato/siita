@@ -1,13 +1,39 @@
 <% provide(:title, "ホーム") %>
-<div class="row">
-  <div class="col-md-9">
-    <div class="feedPage_header">
-      <h2>プログラミング知識を共有しよう</h2>
-      <%= link_to (button_tag "ノウハウ・Tipsを投稿する", type: 'button', class: "btn btn-primary"), new_draft_path %>
+<% if user_signed_in? %>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="feedPage_header">
+          <h2>プログラミング知識を共有しよう</h2>
+          <%= link_to (button_tag "ノウハウ・Tipsを投稿する", type: 'button', class: "btn btn-primary"), new_draft_path %>
+        </div>
+        <div class="streamContainer">
+          <nav>
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#">フィード</a></li>
+              <li><a data-toggle="tab" href="#">すべての投稿</a></li>
+            </ul>
+          </nav>
+          <div class="tab-content">
+            <div class="tab-pane active" id="creatingDrafts">
+              <table class="table table-hover">
+                <tbody>
+                <% @drafts.each do |draft| %>
+                    <tr data-link="<%= draft_path(id: draft.id) %>">
+                      <td><%= draft.title %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane" id="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <div>
-    </div>
-  </div>
-</div>
+<% else %>
+<% end %>
