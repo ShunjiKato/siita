@@ -6,29 +6,31 @@
     <div class="header-right">
 
       <% if user_signed_in? %>
-        <%= link_to (button_tag '<i class="fa fa-pencil"></i>投稿する'.html_safe, type: 'button', class: "btn btn-primary"), new_draft_path %>
         <div class="btn-group" role="group">
-          <button class="btn btn-primary dropdown-toggle btn-custom" data-toggle="dropdown">
+          <%= button_tag onclick: "Turbolinks.visit('#{new_draft_path}')",
+              type: :button, class: "btn btn-primary" do %>
+              <%= '<i class="fa fa-pencil mr-5"></i>投稿する'.html_safe %>
+          <% end %>
+          <button class="btn btn-primary dropdown-toggle pull-right" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
             <li><%= link_to '<i class="fa fa-files-o"></i>下書き'.html_safe, drafts_path %></li>
           </ul>
-
         </div>
-          <%= link_to "ストック一覧", '#', class: "btn-link" %>
-          <div class="btn-group" role="group">
-            <button class="btn btn-primary dropdown-toggle btn-custom" data-toggle="dropdown">
-              <i class="fa fa-user-circle"></i>
-            </button>
-            <ul class="dropdown-menu pull-right">
-              <li><%= link_to '<i class="fa fa-sign-out"></i>ログアウト'.html_safe, destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </div>
-        <% else %>
-          <%= link_to (button_tag "ユーザ登録", type: 'button', class: "btn btn-warning"), new_user_registration_path %>
-          <%= link_to "ログイン", new_user_session_path, class: "btn-link" %>
-        <% end %>
+        <%= link_to "ストック一覧", '#', class: "btn-link" %>
+        <div class="btn-group" role="group">
+          <button class="btn btn-primary dropdown-toggle btn-custom" data-toggle="dropdown">
+            <i class="fa fa-user-circle"></i>
+          </button>
+          <ul class="dropdown-menu pull-right">
+            <li><%= link_to '<i class="fa fa-sign-out"></i>ログアウト'.html_safe, destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      <% else %>
+        <%= link_to (button_tag "ユーザ登録", type: 'button', class: "btn btn-warning"), new_user_registration_path %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn-link" %>
+      <% end %>
     </div>
   </div>
 </header>
