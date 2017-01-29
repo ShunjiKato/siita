@@ -20,8 +20,11 @@
     <%= f.label :content, class: "sr-only control-label" %>
     <%= f.text_area :content, placeholder: "本文",class: "form-control" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "登録", class: "btn btn-primary" %>
+  <div class="checkbox-inline">
+    <%= check_box_tag :check_box_post, true, false, {} %>
+    <%= label_tag :check_box_post, '<i class="fa fa-upload mr-5"></i>投稿する'.html_safe %>
+  </div>
+  <div>
+    <%= button_tag '<i class="fa fa-floppy-o mr-5"></i>下書き保存'.html_safe, :type => "submit", class: "btn btn-primary" %>
   </div>
 <% end %>

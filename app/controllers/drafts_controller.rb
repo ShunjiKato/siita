@@ -18,6 +18,7 @@ class DraftsController < ApplicationController
   # GET /drafts/new
   def new
     @draft = current_user.drafts.build
+    @item = current_user.items.build
   end
 
   # GET /drafts/1/edit
@@ -27,11 +28,18 @@ class DraftsController < ApplicationController
   # POST /drafts
   # POST /drafts.json
   def create
-    #@draft = Draft.new(draft_params)
     @draft = current_user.drafts.build(draft_params)
 
     respond_to do |format|
       if @draft.save
+        if params[:check_box_post]
+          @item = current_user.items.build(
+              title: draft_params[:title],
+              content: draft_params[:content],
+              user_id: @draft.user_id,
+              draft_id: @draft.id )
+          format.html { render :new } unless @item.save
+        end
         format.html { redirect_to @draft, notice: 'Draft was successfully created.' }
         format.json { render :show, status: :created, location: @draft }
       else
