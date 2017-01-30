@@ -17,9 +17,9 @@
             <div class="tab-pane active" id="creatingDrafts">
               <table class="table table-hover">
                 <tbody>
-                <% @drafts.each do |draft| %>
-                    <tr data-link="<%= draft_path(id: draft.id) %>">
-                      <td><%= draft.title %></td>
+                <% @items.each do |item| %>
+                    <tr data-link="<%= item_path(id: item.id) %>">
+                      <td><%= item.title %></td>
                     </tr>
                 <% end %>
                 </tbody>
