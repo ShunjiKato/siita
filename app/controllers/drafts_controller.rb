@@ -18,12 +18,10 @@ class DraftsController < ApplicationController
   # GET /drafts/new
   def new
     @draft = current_user.drafts.build
-    @item = current_user.items.build
   end
 
   # GET /drafts/1/edit
   def edit
-    @item = current_user.items.find_by(draft_id: params[:id])
   end
 
   # POST /drafts
@@ -34,12 +32,7 @@ class DraftsController < ApplicationController
     respond_to do |format|
       if @draft.save
         if params[:check_box_post]
-          @item = current_user.items.build(
-              title: draft_params[:title],
-              content: draft_params[:content],
-              user_id: @draft.user_id,
-              draft_id: @draft.id )
-          format.html { render :new } unless @item.save
+          format.html { render :new } unless entry_item
         end
         format.html { redirect_to @draft, notice: 'Draft was successfully created.' }
         format.json { render :show, status: :created, location: @draft }
@@ -56,12 +49,7 @@ class DraftsController < ApplicationController
     respond_to do |format|
       if @draft.update(draft_params)
         if params[:check_box_post]
-          @item = current_user.items.build(
-              title: draft_params[:title],
-              content: draft_params[:content],
-              user_id: @draft.user_id,
-              draft_id: @draft.id )
-          format.html { render :new } unless @item.save
+          format.html { render :new } unless entry_item
         end
         format.html { redirect_to @draft, notice: 'Draft was successfully updated.' }
         format.json { render :show, status: :ok, location: @draft }
@@ -91,5 +79,15 @@ class DraftsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def draft_params
       params.require(:draft).permit(:title, :content, :user_id)
+    end
+
+    def entry_item
+      @item = current_user.items.find_by(draft_id: params[:id])
+      @item = current_user.items.build if @item.nil?
+      @item.title = draft_params[:title]
+      @item.content = draft_params[:content]
+      @item.user_id = @draft.user_id
+      @item.draft_id = @draft.id
+      @item.save
     end
 end
