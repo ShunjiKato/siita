@@ -24,6 +24,7 @@
             <i class="fa fa-user-circle"></i>
           </button>
           <ul class="dropdown-menu pull-right">
+            <li><%= link_to '<i class="fa fa-gear"></i>設定'.html_safe, edit_user_registration_path, method: :get %></li>
             <li><%= link_to '<i class="fa fa-sign-out"></i>ログアウト'.html_safe, destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
