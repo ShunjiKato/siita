@@ -1,12 +1,14 @@
 class User < ApplicationRecord
+  mount_uploader :image, ImageUploader
   has_many :drafts
   has_many :items
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter, :github]
-  
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]

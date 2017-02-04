@@ -29,3 +29,5 @@
 # ruby version file.
 .ruby-version
 
+# user image file.
+/public/uploads/user/*

@@ -14,6 +14,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'font-awesome-rails'
+gem 'carrierwave',  '~> 1.0'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'rspec-rails',           '~> 3.5.0'

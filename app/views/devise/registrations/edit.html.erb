@@ -11,6 +11,15 @@
           <i class="fa fa-user"></i>アカウント
         </div>
         <div class="panel-body">
+
+          <div class="field form-group">
+            <% if current_user.image.url.present? %>
+              <%= image_tag(current_user.image.url) %>
+            <% end %>
+            <%= f.file_field :image, class: "form-control" %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+
           <div class="field form-group">
             <%= f.label :email %><br />
             <%= f.email_field :email, class: "form-control", autofocus: true %>
