@@ -2,6 +2,10 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_many :drafts
   has_many :items
+  has_many :active_relationships, class_name: "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
