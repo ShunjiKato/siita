@@ -120,6 +120,12 @@ p {
   }
 }
 
+.clickable {
+  &:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+}
 
 /* footer */
 

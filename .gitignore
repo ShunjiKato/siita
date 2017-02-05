@@ -30,4 +30,4 @@
 .ruby-version
 
 # user image file.
-/public/uploads/user/*
+/public/uploads/*
