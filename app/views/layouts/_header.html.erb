@@ -20,8 +20,14 @@
         </div>
         <%= link_to "ストック一覧", '#', class: "btn-link" %>
         <div class="btn-group" role="group">
-          <%= image_tag(current_user.image.url(:thumb), size: "32x32", class: "img-rounded dropdown-toggle clickable",
-                        data: {toggle: "dropdown" }) %>
+          <% if current_user.image.url.nil? %>
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-user-circle"></i>
+            </button>
+          <% else %>
+            <%= image_tag(current_user.image.url(:thumb), size: "32x32", class: "img-rounded dropdown-toggle clickable",
+                          data: {toggle: "dropdown" }) %>
+          <% end %>
           <ul class="dropdown-menu pull-right">
             <li><%= link_to '<i class="fa fa-gear"></i>設定'.html_safe, edit_user_registration_path, method: :get %></li>
             <li><%= link_to '<i class="fa fa-sign-out"></i>ログアウト'.html_safe, destroy_user_session_path, method: :delete %></li>
