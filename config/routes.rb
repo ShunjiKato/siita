@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :drafts
   resources :items
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
-  resources :users, param: :username, path: '/' do
+  resources :users, param: :username, path: '/', only: [:show] do
     member do
       get :following, :followers
     end

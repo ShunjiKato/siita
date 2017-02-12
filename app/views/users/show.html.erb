@@ -1,7 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @user.email %>
-</p>
-
+<% provide(:title, @user.username) %>
+<div class="row userPage">
+  <div class="col-md-3">
+    <% if @user.image.url.present? %>
+      <%= image_tag(@user.image.url, size: "165x165", class: "img-rounded")  %>
+    <% end %>
+    <h3><%= @user.username %></h3>
+  </div>
+  <div class="col-md-9"></div>
+</div>
