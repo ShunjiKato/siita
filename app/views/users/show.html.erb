@@ -3,6 +3,8 @@
   <div class="col-md-3">
     <% if @user.image.url.present? %>
       <%= image_tag(@user.image.url, size: "165x165", class: "img-rounded")  %>
+    <% else %>
+      <div class="userNoImage">No Image</div>
     <% end %>
     <h3><%= @user.username %></h3>
   </div>

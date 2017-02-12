@@ -226,3 +226,12 @@ input {
 .userPage {
   margin-top: 30px;
 }
+
+.userNoImage {
+  background-color: $gray-medium-light;
+  color: gray;
+  border-radius: 1em;
+  width: 165px;
+  line-height: 165px;
+  text-align: center;
+}
