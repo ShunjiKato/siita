@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  root                 'static_pages#home'
+  get       'about' => 'static_pages#about'
   resources :drafts
   resources :items
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
@@ -8,6 +9,5 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  root 'static_pages#home'
-  get 'about' => 'static_pages#about'
+  resources :relationships, only: [:create, :destroy]
 end
