@@ -16,6 +16,7 @@ gem 'omniauth-github'
 gem 'font-awesome-rails'
 gem 'carrierwave',  '~> 1.0'
 gem 'mini_magick'
+gem 'acts-as-taggable-on', '~> 4.0'
 
 group :development, :test do
   gem 'rspec-rails',           '~> 3.5.0'
