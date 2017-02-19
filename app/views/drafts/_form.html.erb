@@ -16,6 +16,11 @@
     <%= f.text_field :title, placeholder: "タイトル", class: "form-control" %>
   </div>
 
+  <div class="field form-group form-group-lg">
+    <%= f.label :tag_list, class: "sr-only control-label" %>
+    <%= text_field_tag 'draft[tag_list]', draft.tag_list.join(","), class: "form-control" %>
+  </div>
+
   <div class="field form-group">
     <%= f.label :content, class: "sr-only control-label" %>
     <%= f.text_area :content, placeholder: "本文",class: "form-control" %>

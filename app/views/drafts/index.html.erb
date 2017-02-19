@@ -36,6 +36,11 @@
       <h1 class="draftsPreviewContent_title">
         <%= @draft.title %>
       </h1>
+      <p>
+        <% @draft.tag_list.each do |tag| %>
+          <span class="label label-primary"><%= tag %></span>
+        <% end %>
+      </p>
     </div>
     <div class="draftsPreviewContent_body">
       <p>
