@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
-      @items = Item.all
+      following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+      @items = Item.where("user_id IN (#{following_ids})
+                           OR user_id = :user_id", user_id: current_user.id)
     end
   end
 

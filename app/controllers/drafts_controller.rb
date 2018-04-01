@@ -78,7 +78,7 @@ class DraftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def draft_params
-      params.require(:draft).permit(:title, :content, :user_id)
+      params.require(:draft).permit(:title, :content, :user_id, :tag_list)
     end
 
     def entry_item
@@ -88,6 +88,7 @@ class DraftsController < ApplicationController
       @item.content = draft_params[:content]
       @item.user_id = @draft.user_id
       @item.draft_id = @draft.id
+      @item.tag_list = @draft.tag_list
       @item.save
     end
 end

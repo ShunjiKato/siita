@@ -1,0 +1,10 @@
+<% provide(:title, "タグ一覧") %>
+<table class="table">
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

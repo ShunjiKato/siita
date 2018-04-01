@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get       'about' => 'static_pages#about'
   resources :drafts
   resources :items
+  resources :tags
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users, param: :username, path: '/', only: [:show] do
     member do
